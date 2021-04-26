@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 
 const MongoClient = require('mongodb').MongoClient;
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.mgbtc.mongodb.net/${process.env.DB_NAME}?retryWrites=true&w=majority`;
-
+const port = 4000;
 const app = express()
 app.use(cors());
 app.use(bodyParser.json());
@@ -62,5 +62,5 @@ app.get('/',(req,res) => {
     res.send('Thank you so much');
 })
 
-app.listen(4000,()=>console.log('listening to 4000 port'));
+app.listen(process.env.PORT || port);
 
